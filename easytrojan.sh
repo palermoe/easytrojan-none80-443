@@ -16,9 +16,6 @@ NIP=${IP}.nip.io
 
 curl -L https://raw.githubusercontent.com/maplecool/easytrojan/main/lsof -o lsof && curl -L https://raw.githubusercontent.com/maplecool/easytrojan/main/tar -o tar && chmod +x lsof tar
 
-pIDa=`./lsof -i :80,443|grep -v "PID" | awk '{print $2}'`
-[ "$pIDa" != "" ] && { echo "Error: Port 80 or 443 is already in use"; exit 1; }
-
 curl -L https://raw.githubusercontent.com/maplecool/easytrojan/main/caddy_2.6.2_linux_amd64_trojan.tar.gz -o caddy_2.6.2_linux_amd64_trojan.tar.gz && ./tar zxf caddy_2.6.2_linux_amd64_trojan.tar.gz -C /usr/local/bin 
 
 mkdir -p /etc/caddy && mkdir -p /caddy/trojan && rm -rf /caddy/trojan/* caddy_2.6.2_linux_amd64_trojan.tar.gz lsof tar
